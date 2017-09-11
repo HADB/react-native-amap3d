@@ -17,10 +17,13 @@ class AMapView(context: Context) : TextureMapView(context) {
     private val eventEmitter: RCTEventEmitter = (context as ThemedReactContext).getJSModule(RCTEventEmitter::class.java)
     private val markers = HashMap<String, AMapMarker>()
     private val polylines = HashMap<String, AMapPolyline>()
-    private var locationType = MyLocationStyle.LOCATION_TYPE_FOLLOW_NO_CENTER
+    private var locationType = MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER
     private val locationStyle by lazy {
         val locationStyle = MyLocationStyle()
         locationStyle.myLocationType(locationType)
+        val drawable = context.resources.getIdentifier("location_arrow", "drawable", context.packageName)
+        val bitmapDescriptor = BitmapDescriptorFactory.fromResource(drawable)
+        locationStyle.myLocationIcon(bitmapDescriptor)
         locationStyle
     }
 
