@@ -7,6 +7,7 @@
 #pragma ide diagnostic ignored "-Woverriding-method-mismatch"
 
 @interface AMapViewManager : RCTViewManager <MAMapViewDelegate>
+@property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
 @end
 
 @implementation AMapViewManager {
